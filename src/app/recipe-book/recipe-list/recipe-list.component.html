@@ -1,0 +1,17 @@
+<div class="row" style="margin-bottom: 10px;">
+  <div class="col-xs-12">
+    <button class="btn btn-success">New Recipe</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-5">
+    <app-recipe-item *ngFor="let recipeItem of recipes" [item]="recipeItem" (onClickItem)="recipeSelected = $event"></app-recipe-item>
+  </div>
+  <div class="col-md-7">
+    <app-recipe-detail *ngIf="recipeSelected else selectRecipeHelp" [recipe]="recipeSelected"></app-recipe-detail>
+    <ng-template #selectRecipeHelp>
+      <p>Please select a recipe!</p>
+    </ng-template>
+  </div>
+</div>
